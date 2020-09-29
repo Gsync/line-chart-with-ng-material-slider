@@ -38,6 +38,7 @@ export class ChartComponent implements OnInit, OnChanges {
       // style: { fontSize: '14px' }
     },
     xAxis: {
+      // showLastLabel: true,
       crosshair: true,
       title: {
         text: null,
@@ -47,7 +48,6 @@ export class ChartComponent implements OnInit, OnChanges {
     },
 
     yAxis: {
-      // showLastLabel:false,
       endOnTick: false,
       title: {
         text: null,
@@ -63,18 +63,18 @@ export class ChartComponent implements OnInit, OnChanges {
         allowPointSelect: true,
         cursor: 'pointer',
         // enableMouseTracking: false,
-        // marker: {
-          // enabled: true,
-          // states: {
-          //   hover: {
-          //     enabled: t,
-          //   },
-          //   select: {
-          //     enabled: true,
-          //     radius: 4,
-          //   },
-          // },
-        // },
+        marker: {
+          enabled: false,
+          states: {
+            hover: {
+              enabled: false,
+            },
+            select: {
+              enabled: true,
+              radius: 5,
+            },
+          },
+        },
       },
       scatter: { connectEnds: true },
     },

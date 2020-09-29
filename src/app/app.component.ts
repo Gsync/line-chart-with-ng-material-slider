@@ -42,7 +42,14 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onSliderValueChange(v: number): void {
     this.selectedValue = v;
-    // this.chart.series[0].data[v].setState('select');
-    this.chart.series[0].data[v].onMouseOver();
+    for (let dat of this.chartData) {
+      if (v === dat[0]) {
+        const idx = this.chartData.indexOf(dat);
+        const point = this.chart.series[0].data[idx];
+        point.setState('select');
+        point.onMouseOver();
+        break;
+      }
+    }
   }
 }
