@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import * as Highcharts from 'highcharts';
 import { distinctUntilChanged } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import * as data from './chart/chartData.json';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   Highcharts: typeof Highcharts = Highcharts;
   title = 'Line chart with angular material slider demo';
   chart: Highcharts.Chart;
@@ -32,18 +32,17 @@ export class AppComponent implements OnInit {
       .subscribe((v) => this.onSliderValueChange(v));
   }
 
+  ngAfterViewInit(): void {
+    this.onSliderValueChange(this.selectedValue);
+  }
+
   logChartInstance(chart: Highcharts.Chart): void {
     this.chart = chart;
   }
 
   onSliderValueChange(v: number): void {
     this.selectedValue = v;
-    for (let dat of this.chartData) {
-      if (v === dat[0]) {
-        let idx1 = this.chartData.indexOf(dat);
-        this.chart.series[0].data[idx1].onMouseOver();
-        break;
-      }
-    }
+    // this.chart.series[0].data[v].setState('select');
+    this.chart.series[0].data[v].onMouseOver();
   }
 }
