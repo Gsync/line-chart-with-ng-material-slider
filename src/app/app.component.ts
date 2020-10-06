@@ -52,4 +52,25 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     }
   }
+
+  //   onSliderValueChange(v: number): void {
+  //   this.selectedValue = v;
+  //   for (let dat of this.chartData) {
+  //     if (v === dat[0]) {
+  //       const idx = this.chartData.indexOf(dat);
+  //       const point = this.chart.series[0].points[idx];
+  //       if (this.chart.series[0].xAxis['plotLinesAndBands'].length) {
+  //           this.chart.series[0].xAxis.removePlotLine('plotline');
+  //       }
+  //       this.chart.series[0].xAxis.addPlotLine({
+  //         color: Highcharts.getOptions().colors[3],
+  //         width: 1.5,
+  //         value: v,
+  //         id: 'plotline',
+  //       });
+  //       point.onMouseOver();
+  //       break;
+  //     }
+  //   }
+  // }
 }
